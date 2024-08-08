@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Results Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <style type="text/css">
+          h1 {
+            font-weight:bold;
+          }
+          p {
+      font-size:14px;
+      color:#538b01;
+      font-weight:bold;
+      font-style:italic;
+    }
+
+    mark.red {
+      color:#ff0000;
+      background: none;
+      font-style:italic;
+    }
+
+    mark.green {
+      color:#00FF00;
+      background: none;
+      font-style:italic;
+    }
+
+    mark.yellow {
+      color:#FFCC33;
+      background: none;
+      font-style:italic;
+    }
+    button{
+      margin:auto;
+      display:block;
+    }
+
+    /* BUTTON STYLES */
+      a{
+        color: white;
+      }
+    button{
+      padding:16px 32px;
+      font-family:helvetica;
+      font-size:16px;
+      font-weight:100;
+      color:#fff;
+      background: #00DCFF;
+      border:0;
+      font-weight:100;
+    }
+    button:hover{
+      background: #2BC8E1;
+    }
+    nav{
+     background: white;
+    }
+     label{
+     color: #005eb8;
+   }
+   .img-logo{
+       width: 188px;
+       margin-top: 10px;
+       margin-bottom: 10px;
+   }
+   .title-form {
+   width: 75%;
+   position: relative;
+   left:10%;
+
+   font-size: 24px!important;
+   display: inline-block;
+   color: #005eb8;
+   font-weight: normal;
+   font-family: 'MaaxRounded-medium';
+   text-align: center;
+   margin-bottom: 40px;
+   }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row col text-center">
+        <table class="table table-hover table-striped table-bordered" style="background-color: white; margin-top:50px;">
+         <thead>
+          <tr>
+            <th scope="col">PatientID</th>
+            <th scope="col">Risk</th>
+          </tr>
+         </thead>
+        <tbody>
+          {% for key,value in patientsrisk.items %}
+          <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+          </tr>
+          {% endfor %}
+       </tbody>
+      </table>
+    </div>
+    </div>
+    <div align="center">
+      <button align="center"><a style='text-decoration:none;' href="Fileupload">Check Another</a></button><br>
+      <button align="center"><a style='text-decoration:none;' href="Home">Go to Home page</a></button>
+    </div>
+  </body>
+</html>

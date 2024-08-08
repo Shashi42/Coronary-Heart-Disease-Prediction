@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Details from user</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <style type="text/css">
+          h1 {
+            font-weight:bold;
+          }
+
+    mark.red {
+      color:#ff0000;
+      background: none;
+      font-style:italic;
+    }
+
+    mark.green {
+      color:#00FF00;
+      background: none;
+      font-style:italic;
+    }
+
+    mark.yellow {
+      color:#FFCC33;
+      background: none;
+      font-style:italic;
+    }
+    button{
+      margin:auto;
+      display:block;
+    }
+
+    /* BUTTON STYLES */
+      a{
+        color: white;
+      }
+    button{
+      padding:16px 32px;
+      font-family:helvetica;
+      font-size:16px;
+      font-weight:100;
+      color:#fff;
+      background: #00DCFF;
+      border:0;
+      font-weight:100;
+    }
+    button:hover{
+      background: #2BC8E1;
+    }
+    nav{
+     background: white;
+    }
+     label{
+     color: #005eb8;
+   }
+   .img-logo{
+       width: 188px;
+       margin-top: 10px;
+       margin-bottom: 10px;
+   }
+   .title-form {
+   width: 75%;
+   position: relative;
+   left:10%;
+
+   font-size: 24px!important;
+   display: inline-block;
+   color: #005eb8;
+   font-weight: normal;
+   font-family: 'Nunito';
+   text-align: center;
+   margin-bottom: 40px;
+   }
+    </style>
+  <script>
+      var _validFileExtensions = [".csv"];
+      function Validate(oForm) {
+      var arrInputs = oForm.getElementsByTagName("input");
+      for (var i = 0; i < arrInputs.length; i++) {
+          var oInput = arrInputs[i];
+          if (oInput.type == "file") {
+              var sFileName = oInput.value;
+              if (sFileName.length > 0) {
+                  var blnValid = false;
+                  for (var j = 0; j < _validFileExtensions.length; j++) {
+                      var sCurExtension = _validFileExtensions[j];
+                      if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                          blnValid = true;
+                          break;
+                      }
+                  }
+
+                  if (!blnValid) {
+                      alert("Sorry, Invalid format .Please upload a csv file.");
+                      return false;
+                  }
+              }
+          }
+      }
+
+      return true;
+      }
+  </script>
+  </head>
+  <body>
+    <h1 align="center">Upload your patients data</h1>
+    <br><br>
+    <h2 align="center">Patient Data must be in the specified format</h2>
+    <div class="container">
+      <div align="center" class="row col text-center">
+        <table class="table table-hover table-striped table-bordered" align="center" style="background-color: white; margin-top:50px;">
+         <thead>
+          <tr>
+            <th scope="col">Attribute</th>
+            <th scope="col">format</th>
+          </tr>
+         </thead>
+        <tbody>
+            <tr>
+              <td>PatientID</td>
+              <td>Patient's ID</td>
+            </tr>
+            <tr>
+              <td>age</td>
+              <td>Age in years (integer)</td>
+            </tr>
+            <tr>
+              <td>Sex</td>
+              <td>sex (1 = male; 0 = female) </td>
+            </tr>
+            <tr>
+              <td>cp</td>
+              <td>cp: chest pain type (Value 1: typical angina;Value 2: atypical angina;Value 3: non-anginal pain;Value 4: asymptomatic;)</td>
+            </tr>
+            <tr>
+              <td>trestbps</td>
+              <td>resting blood pressure (in mm Hg on admission to the hospital)</td>
+            </tr>
+            <tr>
+              <td>chol</td>
+              <td>serum cholestoral in mg/dl</td>
+            </tr>
+            <tr>
+              <td>fbs</td>
+              <td>is the Fasting blood sugar greater than 120 mg/dl (1 = true; 0 = false)</td>
+            </tr>
+            <tr>
+              <td>restecg</td>
+              <td>Resting electrocardiographic results (Value 0: normal;Value 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV);Value 2: showing probable or definite left ventricular hypertrophy by Estes' criteria;)</td>
+            </tr>
+            <tr>
+              <td>thalach</td>
+              <td>Maximum heart rate achieved</td>
+            </tr>
+            <tr>
+              <td>exang</td>
+              <td>Exercise induced angina (1 = yes; 0 = no)</td>
+            </tr>
+            <tr>
+              <td>oldpeak</td>
+                <td>ST depression induced by exercise relative to rest</td>
+            </tr>
+            <tr>
+              <td>slope</td>
+              <td>Slope of the peak exercise ST segment ( Value 1: upsloping; Value 2: flat;Value 3: downsloping )</td>
+            </tr>
+            <tr>
+              <td>ca</td>
+              <td>Number of major vessels (0-3) colored by flourosopy</td>
+            </tr>
+            <tr>
+              <td>thal</td>
+              <td>Type of defect (if any )3 = normal; 6 = fixed defect; 7 = reversable defect</td>
+            </tr>
+       </tbody>
+      </table>
+    </div>
+    </div>
+    <div align="center">
+    <fieldset>
+  		<form action="" method="post" onsubmit="return Validate(this);" enctype="multipart/form-data">
+  			{% csrf_token %}
+  			<br>
+  					<label for="patientdata">Upload patient data in csv format:</label>
+            <input align="center" type="file" name="patientdata" accept=".csv"required>
+            <br><br><button type="submit" name="patientdata">Upload</button>
+  		</form>
+  	</fieldset>
+  </div>
+  </body>
+</html>

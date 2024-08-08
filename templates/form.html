@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Details from user</title>
+  </head>
+  <body style="align-self: center;">
+    <h2 align="center">Please fill the fields using your ECG (Electrocardiographic) report results<h2>
+      <form action="" method="post">
+        {% csrf_token %}
+        <label for="Age">Age:</label>
+  			<input type="number" id="Age" name="Age" min ="21" max="100" required>
+          <br><br>
+        <label for="Sex">Gender:</label>
+  			<input type="radio" name="Sex" value="1"> Male
+        <input type="radio" name="Sex" value="0"> Female
+        <br><br>
+        <label for="cp">Chest Pain type:</label>
+  			<select name="cp" id="cp" required>
+  				<option value="0">typical angina</option>
+  				<option value="1">atypical angina</option>
+          <option value="2">non-anginal pain</option>
+          <option value="3">asymptomatic</option>
+  			</select><br><br>
+        <label for="trestbps">Resting blood pressure:</label>
+  			<input type="number" id="trestbps" name="trestbps" required>
+        <br><br>
+        <label for="chol">Serum Cholestrol Level:</label>
+        <input type="number" id="chol" name="chol" required>
+        <br><br>
+        <label for="fbs">Is your Fasting Blood sugar greater than 120 mg/dl?:</label>
+        <input type="radio" name="fbs" value="0"> Yes
+        <input type="radio" name="fbs" value="1"> No
+        <br><br>
+        <label for="restecg">What is your resting electrocardiographic results (rest ECG) ?:</label>
+  			<select name="restecg" id="restecg" required>
+  				<option value="0">Normal</option>
+  				<option value="1">Having ST-T wave abnormality</option>
+          <option value="2">Showing probable or definite left ventricular hypertrophy</option>
+        </select><br><br>
+        <label for="thalach">Maximum Heart rate achieved:</label>
+        <input type="number" id="thalach" name="thalach" required>
+        <br><br>
+        <label for="exang">Did you experience pain during exercise (exercise induced angina)?:</label>
+        <input type="radio" name="exang" value="0"> Yes
+        <input type="radio" name="exang" value="1"> No
+        <br><br>
+        <label for="oldpeak">How much is ST depression when induced by exercise relative to rest ?:</label>
+   			<input type="number" id="oldpeak" name="oldpeak" step="0.1" min ="0.1" max="10.0" required>
+         <br><br>
+        <label for="slope">How was the slope of the peak exercise ST segment ?:</label>
+  			<select name="slope" id="slope" required>
+  				<option value="0">Upsloping</option>
+  				<option value="1">Flat</option>
+          <option value="2">Downsloping</option>
+        </select><br><br>
+
+        <label for="ca">What are the number of major vessels (0-3) colored by flourosopy</label>
+  			<input type="number" id="ca" name="ca" min ="0" max="3" required>
+        <br><br>
+        <label for="thal">Type of defect? (Select normal if you don't have any):</label>
+  			<select name="thal" id="thal" required> normal; 6 = ; 7 =
+  				<option value="0">Normal</option>
+  				<option value="1">Fixed defect</option>
+          <option value="2">Reversable defect</option>
+        </select><br><br>
+        <button type="submit" name="predict" align="center">Predict Now!</button>
+      </form>
+  </body>
+</html>

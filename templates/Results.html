@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Results Page</title>
+    <style type="text/css">
+          h1 {
+            font-weight:bold;
+          }
+          p {
+      font-size:14px;
+      color:#538b01;
+      font-weight:bold;
+      font-style:italic;
+    }
+
+    mark.red {
+      color:#ff0000;
+      background: none;
+      font-style:italic;
+    }
+
+    mark.green {
+      color:#00FF00;
+      background: none;
+      font-style:italic;
+    }
+
+    mark.yellow {
+      color:#FFCC33;
+      background: none;
+      font-style:italic;
+    }
+    button{
+      margin:auto;
+      display:block;
+    }
+
+    /* BUTTON STYLES */
+      a{
+        color: white;
+      }
+    button{
+      padding:16px 32px;
+      font-family:helvetica;
+      font-size:16px;
+      font-weight:100;
+      color:#fff;
+      background: #00DCFF;
+      border:0;
+      font-weight:100;
+    }
+    button:hover{
+      background: #2BC8E1;
+    }
+    </style>
+  </head>
+
+  <body>
+    <p>
+    {% if riskresult == "At risk" %}
+      <h1 align="center">Currently you are  <mark class="red">At risk</mark></h1>
+      <br><br>
+      <h1 align="center">Possible reasons:</h2>
+      <!--For Resting BLood pressure -->
+      {% if formdata.trestbps > 120 %}
+        <h2 align="center">It would appear that your Resting Blood Pressure level is <mark class="yellow">slightly more than average blood pressure level (120)</mark><h2>
+      {% endif %}
+      <!--For Cholestrol -->
+      {% if formdata.chol > 240 %}
+        <h2 align="center">It is observed that your Cholestrol level is <mark class="red">dangerously higher than the average cholestrol level for human beings (240 mg/dl)</mark><h2>
+      {% endif %}
+      <!--For Heart rate -->
+      {% if formdata.thalach > 100 %}
+        <h2 align="center">Also the Heart rate is <mark class="yellow">higher than the average heart rate for human beings (60-100 bpm)</mark><h2>
+      {% endif %}
+    {% else %}
+      <h1 align="center">Currently you have <mark class="green">No risk</mark></h1>
+    {% endif %}
+    </p>
+    <div align="center">
+      <button align="center"><a style='text-decoration:none;' href="Form">Check Another</a></button><br>
+      <button align="center"><a style='text-decoration:none;' href="Home">Go to Home page</a></button>
+    </div>
+  </body>
+</html>

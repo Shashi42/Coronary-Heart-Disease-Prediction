@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HOME</title>
+    <style type="text/css">
+          h1 {
+            font-weight:bold;
+          }
+          p {
+      font-size:14px;
+      color:#538b01;
+      font-weight:bold;
+      font-style:italic;
+    }
+
+    mark.red {
+      color:#ff0000;
+      background: none;
+      font-style:italic;
+    }
+
+    mark.green {
+      color:#00FF00;
+      background: none;
+      font-style:italic;
+    }
+
+    mark.yellow {
+      color:#FFCC33;
+      background: none;
+      font-style:italic;
+    }
+    button{
+      margin:auto;
+      display:block;
+    }
+
+    /* BUTTON STYLES */
+      a{
+        color: white;
+      }
+    button{
+      padding:16px 32px;
+      font-family:helvetica;
+      font-size:16px;
+      font-weight:100;
+      color:#fff;
+      background: #00DCFF;
+      border:0;
+      font-weight:100;
+    }
+    button:hover{
+      background: #2BC8E1;
+    }
+    </style>
+  </head>
+  <body>
+    <h1 align="center">Coronary Heart Disease Prediction System using Ensemble Techniques<h1>
+      <br><br>
+      <div align="center">
+      <form action="" method="post">
+        {% csrf_token %}
+        <label for="predict">Are you a patient? Click below:</label><br><br>
+        <button type="submit" name="predict" align="center">Predict Now!</button><br>
+        <label for="dpredict">Are you a Doctor? Click below:</label><br><br>
+        <button type="submit" name="dpredict" align="center">Predict Now!</button>
+      </form>
+    </div>
+  </body>
+</html>
